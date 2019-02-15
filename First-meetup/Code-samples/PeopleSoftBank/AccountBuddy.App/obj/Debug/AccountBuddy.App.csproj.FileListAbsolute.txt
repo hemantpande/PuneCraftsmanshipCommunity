@@ -8,3 +8,6 @@ C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBan
 C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.App\obj\Debug\AccountBuddy.App.exe
 C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.App\obj\Debug\AccountBuddy.App.pdb
 C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.App\obj\Debug\AccountBuddy.App.MainForm.resources
+C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.App\bin\Debug\AccountBuddy.Domain.dll
+C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.App\bin\Debug\AccountBuddy.Domain.pdb
+C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.App\obj\Debug\AccountBuddy.App.csproj.CopyComplete
