@@ -22,40 +22,74 @@ namespace AccountBuddy.App
 
         private void createAccountButton_Click(object sender, EventArgs e)
         {
-            AddAccount();
+            bool errorEncountered = false;
+            string errorMessage = "";
+            var account = new Account();
+            account.Id = Guid.NewGuid();
+            account.HolderName = nameTextBox.Text;
+            account.HolderUniqueIdentificationNumber = uidTextBox.Text;
+            account.HolderCurrentAddress = currentAddressTextBox.Text;
+            account.HolderAge = ageTextBox.Text;
 
-            PrintMessage(this.accountStatuslabel, "Account created successfully.");
+            try
+            {
+                account.Validate();
+            }
+            catch (Exception ex)
+            {
+                errorEncountered = true;
+                errorMessage = ex.Message;
+            }
 
-            ResetFields();
+            if (errorEncountered)
+            {
+                accountStatuslabel.ForeColor = Color.Red;
+                accountStatuslabel.Text = errorMessage;
+            }
+            else
+            {
+                Accounts.Add(account);
 
-            ResetDataSource();
+                accountStatuslabel.ForeColor = Color.Red;
+                accountStatuslabel.Text = "Account created successfully.";
+
+                ResetFields();
+
+                ResetDataSource();
+            }
         }
 
-        private void depositButton_Click(object sender, EventArgs e)
+        private void depositOrWithdrawButton_Click(object sender, EventArgs e)
         {
             Account account = GetAccount();
 
-            DepositMoney(account);
-
-            PrintMessage(depositMoneyStatusLabel, string.Format("Money deposited. Updated balance : {0}", account.Balance));
+            switch(transactionTypeComboBox.SelectedValue.ToString())
+            {
+                case "Deposit":
+                    DepositMoney(account);
+                    depositMoneyStatusLabel.ForeColor = Color.Green;
+                    depositMoneyStatusLabel.Text = string.Format("Money deposited. Updated balance : {0}", account.Balance);
+                    break;
+                case "Withdraw":
+                    WithdrawMoney(account);
+                    depositMoneyStatusLabel.ForeColor = Color.Green;
+                    depositMoneyStatusLabel.Text = string.Format("Money withdrawn. Updated balance : {0}", account.Balance);
+                    break;
+                default:
+                    throw new Exception("Operation not supported.");
+            }
         }
 
-        private void AddAccount()
+        private void WithdrawMoney(Account account)
         {
-            var account = new Account(nameTextBox.Text, uidTextBox.Text, currentAddressTextBox.Text);
-            Accounts.Add(account);
-        }
-
-        private void PrintMessage(Label label, string message)
-        {
-            label.ForeColor = Color.Green;
-            label.Text = message;
+            account.Withdraw(Convert.ToDecimal(amountTextBox.Text));
         }
 
         private void ResetFields()
         {
             this.nameTextBox.Text = string.Empty;
             this.uidTextBox.Text = string.Empty;
+            this.ageTextBox.Text = string.Empty;
             this.currentAddressTextBox.Text = string.Empty;
         }
 
@@ -69,7 +103,7 @@ namespace AccountBuddy.App
 
         private void DepositMoney(Account account)
         {
-            account.Deposit(Convert.ToDecimal(depositAmountTextBox.Text));
+            account.Deposit(Convert.ToDecimal(amountTextBox.Text));
         }
 
         private Account GetAccount()
