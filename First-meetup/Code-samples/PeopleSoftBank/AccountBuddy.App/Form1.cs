@@ -1,5 +1,4 @@
-﻿using AccountBuddy.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,7 +32,37 @@ namespace AccountBuddy.App
 
             try
             {
-                account.Validate();
+                if (!string.IsNullOrEmpty(account.HolderName))
+                {
+                    if (account.HolderUniqueIdentificationNumber.Length == 5)
+                    {
+                        int result = 0;
+                        if (int.TryParse(account.HolderAge, out result))
+                        {
+                            // Senior citizen
+                            if (result > 60)
+                            {
+                                account.Roi = 8;
+                            }
+                            else
+                            {
+                                account.Roi = 7;
+                            }
+                        }
+                        else
+                        {
+                            throw new Exception("Age not in correct format.");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Identification number should be 5 digit.");
+                    }
+                }
+                else
+                {
+                    throw new Exception("Holder name cannot be empty.");
+                }
             }
             catch (Exception ex)
             {
@@ -63,15 +92,54 @@ namespace AccountBuddy.App
         {
             Account account = GetAccount();
 
-            switch(transactionTypeComboBox.SelectedValue.ToString())
+            switch (transactionTypeComboBox.SelectedItem)
             {
                 case "Deposit":
-                    DepositMoney(account);
+                    if (!account.IsFrozen && !account.IsClosed)
+                    {
+                        // Assume this value is read from DB, right now setting it explicitely to true....
+
+                        /* this.IsVerified = SQLDb.Query("select is_verified from account"); */
+
+                        if (account.IsVerified)
+                        {
+                            account.Balance += Convert.ToDecimal(amountTextBox.Text);
+
+                            if (account.IsFrozen == true)
+                                account.IsFrozen = false;
+                        }
+                        else
+                        {
+                            string.Format("Account not yet verified.");
+                            break;
+                        }
+                    }
                     depositMoneyStatusLabel.ForeColor = Color.Green;
                     depositMoneyStatusLabel.Text = string.Format("Money deposited. Updated balance : {0}", account.Balance);
                     break;
                 case "Withdraw":
-                    WithdrawMoney(account);
+                    if (!account.IsClosed)
+                    {
+                        /* this.IsVerified = SQLDb.Query("select is_verified from account"); */
+
+                        if (account.IsVerified)
+                        {
+                            if (account.IsFrozen)
+                            {
+                                depositMoneyStatusLabel.Text = string.Format("Your account is frozen. Contact branch.");
+                                break;
+                            }
+
+                            if (account.Balance < 0 || account.Balance < Convert.ToDecimal(amountTextBox.Text))
+                            {
+                                depositMoneyStatusLabel.Text = string.Format("Not enough balance");
+                                break;
+                            }
+
+                            account.Balance -= Convert.ToDecimal(amountTextBox.Text);
+                        }
+                    }
+
                     depositMoneyStatusLabel.ForeColor = Color.Green;
                     depositMoneyStatusLabel.Text = string.Format("Money withdrawn. Updated balance : {0}", account.Balance);
                     break;
@@ -99,11 +167,6 @@ namespace AccountBuddy.App
             accountListComboBox.DataSource = Accounts;
             this.accountListComboBox.DisplayMember = nameof(Account.HolderName);
             this.accountListComboBox.ValueMember = nameof(Account.Id);
-        }
-
-        private void DepositMoney(Account account)
-        {
-            account.Deposit(Convert.ToDecimal(amountTextBox.Text));
         }
 
         private Account GetAccount()
