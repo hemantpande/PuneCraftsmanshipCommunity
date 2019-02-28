@@ -21,32 +21,32 @@ namespace AccountBuddy.App
 
         private void createAccountButton_Click(object sender, EventArgs e)
         {
-            bool errorEncountered = false;
-            string errorMessage = "";
-            var account = new Account();
-            account.Id = Guid.NewGuid();
-            account.HolderName = nameTextBox.Text;
-            account.HolderUniqueIdentificationNumber = uidTextBox.Text;
-            account.HolderCurrentAddress = currentAddressTextBox.Text;
-            account.HolderAge = ageTextBox.Text;
+            bool fail = false;
+            string err = "";
+            var acc = new Account();
+            acc.Id = Guid.NewGuid();
+            acc.Name = nameTextBox.Text;
+            acc.Uid = uidTextBox.Text;
+            acc.Address = currentAddressTextBox.Text;
+            acc.Age = ageTextBox.Text;
 
             try
             {
-                if (!string.IsNullOrEmpty(account.HolderName))
+                if (!string.IsNullOrEmpty(acc.Name))
                 {
-                    if (account.HolderUniqueIdentificationNumber.Length == 5)
+                    if (acc.Uid.Length == 5)
                     {
                         int result = 0;
-                        if (int.TryParse(account.HolderAge, out result))
+                        if (int.TryParse(acc.Age, out result))
                         {
                             // Senior citizen
                             if (result > 60)
                             {
-                                account.Roi = 8;
+                                acc.Roi = 8;
                             }
                             else
                             {
-                                account.Roi = 7;
+                                acc.Roi = 7;
                             }
                         }
                         else
@@ -66,31 +66,62 @@ namespace AccountBuddy.App
             }
             catch (Exception ex)
             {
-                errorEncountered = true;
-                errorMessage = ex.Message;
+                fail = true;
+                err = ex.Message;
+
+                if(ex.Message == "Identification number should be 5 digit.")
+                {
+                    try
+                    {
+                        var contries = new[] { "US", "UK", "AUS" };
+                        // service call to check if account is NRI
+                        foreach (var item in contries)
+                        {
+                            if(uidTextBox.Text.Contains(item))
+                            {
+                                fail = false;
+                            }
+                            else
+                            {
+                                throw new Exception("Country not supported by bank");
+                            }
+                        }
+                    }
+                    catch(Exception ex2)
+                    {
+                        fail = true;
+                        err = ex2.Message;
+                    }
+                }
             }
 
-            if (errorEncountered)
+            if (fail)
             {
                 accountStatuslabel.ForeColor = Color.Red;
-                accountStatuslabel.Text = errorMessage;
+                accountStatuslabel.Text = err;
             }
             else
             {
-                Accounts.Add(account);
+                Accounts.Add(acc);
 
                 accountStatuslabel.ForeColor = Color.Red;
                 accountStatuslabel.Text = "Account created successfully.";
 
-                ResetFields();
-
-                ResetDataSource();
+                this.nameTextBox.Text = string.Empty;
+                this.uidTextBox.Text = string.Empty;
+                this.ageTextBox.Text = string.Empty;
+                this.currentAddressTextBox.Text = string.Empty;
+                accountListComboBox.DataSource = null;
+                accountListComboBox.DataSource = Accounts;
+                this.accountListComboBox.DisplayMember = nameof(Account.Name);
+                this.accountListComboBox.ValueMember = nameof(Account.Id);
             }
         }
 
         private void depositOrWithdrawButton_Click(object sender, EventArgs e)
         {
-            Account account = GetAccount();
+            var selectedAccount = (Guid)accountListComboBox.SelectedValue;
+            var account = Accounts.First(a => a.Id == selectedAccount);
 
             switch (transactionTypeComboBox.SelectedItem)
             {
@@ -146,34 +177,6 @@ namespace AccountBuddy.App
                 default:
                     throw new Exception("Operation not supported.");
             }
-        }
-
-        private void WithdrawMoney(Account account)
-        {
-            account.Withdraw(Convert.ToDecimal(amountTextBox.Text));
-        }
-
-        private void ResetFields()
-        {
-            this.nameTextBox.Text = string.Empty;
-            this.uidTextBox.Text = string.Empty;
-            this.ageTextBox.Text = string.Empty;
-            this.currentAddressTextBox.Text = string.Empty;
-        }
-
-        private void ResetDataSource()
-        {
-            accountListComboBox.DataSource = null;
-            accountListComboBox.DataSource = Accounts;
-            this.accountListComboBox.DisplayMember = nameof(Account.HolderName);
-            this.accountListComboBox.ValueMember = nameof(Account.Id);
-        }
-
-        private Account GetAccount()
-        {
-            var selectedAccount = (Guid)accountListComboBox.SelectedValue;
-            var account = Accounts.First(a => a.Id == selectedAccount);
-            return account;
         }
     }
 }

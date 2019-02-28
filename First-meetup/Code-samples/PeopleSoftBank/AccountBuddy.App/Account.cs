@@ -8,10 +8,10 @@ namespace AccountBuddy.App
 {
     public class Account
     {
-        public string HolderName { set; get; }
-        public string HolderUniqueIdentificationNumber { set; get; }
-        public string HolderCurrentAddress { set; get; }
-        public string HolderAge { get; set; }
+        public string Name { set; get; }
+        public string Uid { set; get; }
+        public string Address { set; get; }
+        public string Age { get; set; }
         public decimal Roi { get; set; }
 
         public bool IsVerified { get; set; }
