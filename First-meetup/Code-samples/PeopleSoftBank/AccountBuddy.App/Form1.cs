@@ -148,7 +148,7 @@ namespace AccountBuddy.App
             switch (transactionTypeComboBox.SelectedItem)
             {
                 case "Deposit":
-                    if (!account.IsFrozen && !account.IsClosed)
+                    if (account.IsNotFrozen && !account.IsClosed)
                     {
                         // Assume this value is read from DB, right now setting it explicitely to true....
 
@@ -158,8 +158,8 @@ namespace AccountBuddy.App
                         {
                             account.Balance = account.Balance + Convert.ToDecimal(amountTextBox.Text);
 
-                            if (account.IsFrozen == true)
-                                account.IsFrozen = false;
+                            if (!account.IsNotFrozen)
+                                account.IsNotFrozen = true;
                         }
                         else
                         {
@@ -181,7 +181,7 @@ namespace AccountBuddy.App
 
 
 
-                            if (account.IsFrozen)
+                            if (!account.IsNotFrozen)
                             {
                                 depositMoneyStatusLabel.Text = string.Format("Your account is frozen. Contact branch.");
                                 break;
@@ -216,21 +216,21 @@ namespace AccountBuddy.App
 
         public bool IsVerified { get; set; }
         public bool IsClosed { get; set; }
-        public bool IsFrozen { get; set; }
+        public bool IsNotFrozen { get; set; }
 
         public Guid Id { set; get; }
         public decimal Balance { get; set; }
 
         public Account()
         {
-            this.IsFrozen = false;
+            this.IsNotFrozen = true;
             this.IsClosed = false;
             this.IsVerified = true;
         }
 
         public void Deposit(decimal depositAmount)
         {
-            if (!IsFrozen && !IsClosed)
+            if (IsNotFrozen && !IsClosed)
             {
                 // Assume this value is read from DB, right now setting it explicitely to true....
 
@@ -240,8 +240,8 @@ namespace AccountBuddy.App
                 {
                     this.Balance += depositAmount;
 
-                    if (this.IsFrozen == true)
-                        IsFrozen = false;
+                    if (this.IsNotFrozen == false)
+                        IsNotFrozen = true;
                 }
             }
         }
@@ -254,7 +254,7 @@ namespace AccountBuddy.App
 
                 if (IsVerified)
                 {
-                    if (IsFrozen)
+                    if (!IsNotFrozen)
                     {
                         throw new Exception("Your account is frozen. Contact branch.");
                     }
