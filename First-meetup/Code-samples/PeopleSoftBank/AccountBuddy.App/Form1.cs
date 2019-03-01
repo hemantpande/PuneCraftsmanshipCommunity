@@ -12,7 +12,7 @@ namespace AccountBuddy.App
 {
     public partial class MainForm : Form
     {
-        private List<Account> Accounts = new List<Account>();
+        public List<Account> Accounts = new List<Account>();
 
         public MainForm()
         {
@@ -21,9 +21,17 @@ namespace AccountBuddy.App
 
         private void createAccountButton_Click(object sender, EventArgs e)
         {
+            // vars init begins here
             bool fail = false;
             string err = "";
-            var acc = new Account();
+            int result = 0;
+            Account acc = new Account();
+
+            //put list of countries in array
+            string[] cntriesArray = new[] { "US", "UK", "AUS" };
+            // vars init ends here
+
+
             acc.Id = Guid.NewGuid();
             acc.Name = nameTextBox.Text;
             acc.Uid = uidTextBox.Text;
@@ -34,19 +42,29 @@ namespace AccountBuddy.App
             {
                 if (!string.IsNullOrEmpty(acc.Name))
                 {
+
+
+
+
+
                     if (acc.Uid.Length == 5)
                     {
-                        int result = 0;
+
+
+
                         if (int.TryParse(acc.Age, out result))
                         {
-                            // Senior citizen
+                            //DFCT #566 Abhijeet 
+                            //We're now requiring check for age greater than 60 
+                            // so I added check for it. Boy, programming is hard.
+
                             if (result > 60)
                             {
                                 acc.Roi = 8;
                             }
                             else
                             {
-                                acc.Roi = 7;
+                                acc.Roi = 4;
                             }
                         }
                         else
@@ -73,9 +91,17 @@ namespace AccountBuddy.App
                 {
                     try
                     {
-                        var contries = new[] { "US", "UK", "AUS" };
+                        //foreach (var item in cntriesToExcludeArray)
+                        //{
+                        //    if(uidTextBox.Text.Contains(item))
+                        //    {
+                        //         throw new Exception("Country not supported by bank");
+                        //    }
+                        //}
+
+
                         // service call to check if account is NRI
-                        foreach (var item in contries)
+                        foreach (var item in cntriesArray)
                         {
                             if(uidTextBox.Text.Contains(item))
                             {
@@ -89,8 +115,7 @@ namespace AccountBuddy.App
                     }
                     catch(Exception ex2)
                     {
-                        fail = true;
-                        err = ex2.Message;
+                        //in case the db call fails 
                     }
                 }
             }
@@ -155,6 +180,10 @@ namespace AccountBuddy.App
 
                         if (account.IsVerified)
                         {
+
+
+
+
                             if (account.IsFrozen)
                             {
                                 depositMoneyStatusLabel.Text = string.Format("Your account is frozen. Contact branch.");
