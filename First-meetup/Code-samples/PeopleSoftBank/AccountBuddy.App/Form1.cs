@@ -12,7 +12,7 @@ namespace AccountBuddy.App
 {
     public partial class MainForm : Form
     {
-        public List<Account> Accounts = new List<Account>();
+        public List<Account> _accts = new List<Account>();
 
         public MainForm()
         {
@@ -101,9 +101,9 @@ namespace AccountBuddy.App
 
 
                         // service call to check if account is NRI
-                        foreach (var item in cntriesArray)
-                        {
-                            if(uidTextBox.Text.Contains(item))
+                            for (int i = 0; i < cntriesArray.Length; i++) {
+                            var item = cntriesArray[i];
+                            if (uidTextBox.Text.Contains(item))
                             {
                                 fail = false;
                             }
@@ -127,17 +127,14 @@ namespace AccountBuddy.App
             }
             else
             {
-                Accounts.Add(acc);
+                _accts.Add(acc);
 
                 accountStatuslabel.ForeColor = Color.Red;
                 accountStatuslabel.Text = "Account created successfully.";
 
-                this.nameTextBox.Text = string.Empty;
-                this.uidTextBox.Text = string.Empty;
-                this.ageTextBox.Text = string.Empty;
-                this.currentAddressTextBox.Text = string.Empty;
+                this.nameTextBox.Text = this.uidTextBox.Text = this.ageTextBox.Text = this.currentAddressTextBox.Text = string.Empty;
                 accountListComboBox.DataSource = null;
-                accountListComboBox.DataSource = Accounts;
+                accountListComboBox.DataSource = _accts;
                 this.accountListComboBox.DisplayMember = nameof(Account.Name);
                 this.accountListComboBox.ValueMember = nameof(Account.Id);
             }
@@ -146,7 +143,7 @@ namespace AccountBuddy.App
         private void depositOrWithdrawButton_Click(object sender, EventArgs e)
         {
             var selectedAccount = (Guid)accountListComboBox.SelectedValue;
-            var account = Accounts.First(a => a.Id == selectedAccount);
+            var account = _accts.First(a => a.Id == selectedAccount);
 
             switch (transactionTypeComboBox.SelectedItem)
             {
@@ -159,7 +156,7 @@ namespace AccountBuddy.App
 
                         if (account.IsVerified)
                         {
-                            account.Balance += Convert.ToDecimal(amountTextBox.Text);
+                            account.Balance = account.Balance + Convert.ToDecimal(amountTextBox.Text);
 
                             if (account.IsFrozen == true)
                                 account.IsFrozen = false;
@@ -171,7 +168,7 @@ namespace AccountBuddy.App
                         }
                     }
                     depositMoneyStatusLabel.ForeColor = Color.Green;
-                    depositMoneyStatusLabel.Text = string.Format("Money deposited. Updated balance : {0}", account.Balance);
+                    depositMoneyStatusLabel.Text = "Money deposited. Updated balance : "+ account.Balance;
                     break;
                 case "Withdraw":
                     if (!account.IsClosed)
@@ -196,7 +193,7 @@ namespace AccountBuddy.App
                                 break;
                             }
 
-                            account.Balance -= Convert.ToDecimal(amountTextBox.Text);
+                            account.Balance = account.Balance + Convert.ToDecimal(amountTextBox.Text);
                         }
                     }
 
@@ -205,6 +202,70 @@ namespace AccountBuddy.App
                     break;
                 default:
                     throw new Exception("Operation not supported.");
+            }
+        }
+    }
+
+    public class Account
+    {
+        public string Name { set; get; }
+        public string Uid { set; get; }
+        public string Address { set; get; }
+        public string Age { get; set; }
+        public decimal Roi { get; set; }
+
+        public bool IsVerified { get; set; }
+        public bool IsClosed { get; set; }
+        public bool IsFrozen { get; set; }
+
+        public Guid Id { set; get; }
+        public decimal Balance { get; set; }
+
+        public Account()
+        {
+            this.IsFrozen = false;
+            this.IsClosed = false;
+            this.IsVerified = true;
+        }
+
+        public void Deposit(decimal depositAmount)
+        {
+            if (!IsFrozen && !IsClosed)
+            {
+                // Assume this value is read from DB, right now setting it explicitely to true....
+
+                /* this.IsVerified = SQLDb.Query("select is_verified from account"); */
+
+                if (IsVerified)
+                {
+                    this.Balance += depositAmount;
+
+                    if (this.IsFrozen == true)
+                        IsFrozen = false;
+                }
+            }
+        }
+
+        public void Withdraw(decimal withdrawAmount)
+        {
+            if (!IsClosed)
+            {
+                /* this.IsVerified = SQLDb.Query("select is_verified from account"); */
+
+                if (IsVerified)
+                {
+                    if (IsFrozen)
+                    {
+                        throw new Exception("Your account is frozen. Contact branch.");
+                    }
+
+                    if (Balance < 0 || Balance < withdrawAmount)
+                    {
+                        throw new Exception("Not enough balance");
+                    }
+
+                    Balance -= withdrawAmount;
+                }
             }
         }
     }
