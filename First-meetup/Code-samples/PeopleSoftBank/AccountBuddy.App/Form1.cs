@@ -135,8 +135,8 @@ namespace AccountBuddy.App
                 this.nameTextBox.Text = this.uidTextBox.Text = this.ageTextBox.Text = this.currentAddressTextBox.Text = string.Empty;
                 accountListComboBox.DataSource = null;
                 accountListComboBox.DataSource = _accts;
-                this.accountListComboBox.DisplayMember = nameof(Account.Name);
-                this.accountListComboBox.ValueMember = nameof(Account.Id);
+                this.accountListComboBox.DisplayMember = "Name";
+                this.accountListComboBox.ValueMember = "Id";
             }
         }
 
@@ -238,7 +238,7 @@ namespace AccountBuddy.App
 
                 if (IsVerified)
                 {
-                    this.Balance += depositAmount;
+                    this.Balance = this.Balance + depositAmount;
 
                     if (this.IsNotFrozen == false)
                         IsNotFrozen = true;
@@ -254,6 +254,15 @@ namespace AccountBuddy.App
 
                 if (IsVerified)
                 {
+
+
+
+
+
+
+                    //DEFECT #3456 CO 02/23/2019
+                    //We weren't verified not frozen condition
+
                     if (!IsNotFrozen)
                     {
                         throw new Exception("Your account is frozen. Contact branch.");
