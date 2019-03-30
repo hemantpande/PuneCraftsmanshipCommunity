@@ -1,6 +1,0 @@
-C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.Domain\bin\Debug\AccountBuddy.Domain.dll
-C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.Domain\bin\Debug\AccountBuddy.Domain.pdb
-C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.Domain\obj\Debug\AccountBuddy.Domain.csprojResolveAssemblyReference.cache
-C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.Domain\obj\Debug\AccountBuddy.Domain.csproj.CoreCompileInputs.cache
-C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.Domain\obj\Debug\AccountBuddy.Domain.dll
-C:\repos\PSCC\PuneCraftsmanshipCommunity\First-meetup\Code-samples\PeopleSoftBank\AccountBuddy.Domain\obj\Debug\AccountBuddy.Domain.pdb
