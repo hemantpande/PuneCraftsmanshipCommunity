@@ -12,7 +12,7 @@ namespace AccountBuddy.App
 {
     public partial class MainForm : Form
     {
-        public List<Account> _accts = new List<Account>();
+        public List<AccountInformation> _accts = new List<AccountInformation>();
 
         public MainForm()
         {
@@ -25,7 +25,7 @@ namespace AccountBuddy.App
             bool fail = false;
             string err = "";
             int result = 0;
-            Account acc = new Account();
+            AccountInformation acc = new AccountInformation();
 
             //put list of countries in array
             string[] cntriesArray = new[] { "US", "UK", "AUS" };
@@ -33,14 +33,14 @@ namespace AccountBuddy.App
 
 
             acc.Id = Guid.NewGuid();
-            acc.Name = nameTextBox.Text;
+            acc.NameOfAccountHolder = nameTextBox.Text;
             acc.Uid = uidTextBox.Text;
-            acc.Address = currentAddressTextBox.Text;
-            acc.Age = ageTextBox.Text;
+            acc.Addr = currentAddressTextBox.Text;
+            acc.AgeOfUser = ageTextBox.Text;
 
             try
             {
-                if (!string.IsNullOrEmpty(acc.Name))
+                if (!string.IsNullOrEmpty(acc.NameOfAccountHolder))
                 {
 
 
@@ -52,7 +52,7 @@ namespace AccountBuddy.App
 
 
 
-                        if (int.TryParse(acc.Age, out result))
+                        if (int.TryParse(acc.AgeOfUser, out result))
                         {
                             //DFCT #566 Abhijeet 
                             //We're now requiring check for age greater than 60 
@@ -148,13 +148,13 @@ namespace AccountBuddy.App
             switch (transactionTypeComboBox.SelectedItem)
             {
                 case "Deposit":
-                    if (account.IsNotFrozen && !account.IsClosed)
+                    if (account.IsNotFrozen && !account.closeAccount)
                     {
                         // Assume this value is read from DB, right now setting it explicitely to true....
 
                         /* this.IsVerified = SQLDb.Query("select is_verified from account"); */
 
-                        if (account.IsVerified)
+                        if (account.substantiated)
                         {
                             account.Balance = account.Balance + Convert.ToDecimal(amountTextBox.Text);
 
@@ -171,11 +171,11 @@ namespace AccountBuddy.App
                     depositMoneyStatusLabel.Text = "Money deposited. Updated balance : "+ account.Balance;
                     break;
                 case "Withdraw":
-                    if (!account.IsClosed)
+                    if (!account.closeAccount)
                     {
                         /* this.IsVerified = SQLDb.Query("select is_verified from account"); */
 
-                        if (account.IsVerified)
+                        if (account.substantiated)
                         {
 
 
@@ -206,76 +206,26 @@ namespace AccountBuddy.App
         }
     }
 
-    public class Account
+    public class AccountInformation
     {
-        public string Name { set; get; }
+        public string NameOfAccountHolder { set; get; }
         public string Uid { set; get; }
-        public string Address { set; get; }
-        public string Age { get; set; }
+        public string Addr { set; get; }
+        public string AgeOfUser { get; set; }
         public decimal Roi { get; set; }
 
-        public bool IsVerified { get; set; }
-        public bool IsClosed { get; set; }
+        public bool substantiated { get; set; }
+        public bool closeAccount { get; set; }
         public bool IsNotFrozen { get; set; }
 
         public Guid Id { set; get; }
         public decimal Balance { get; set; }
 
-        public Account()
+        public AccountInformation()
         {
             this.IsNotFrozen = true;
-            this.IsClosed = false;
-            this.IsVerified = true;
-        }
-
-        public void Deposit(decimal depositAmount)
-        {
-            if (IsNotFrozen && !IsClosed)
-            {
-                // Assume this value is read from DB, right now setting it explicitely to true....
-
-                /* this.IsVerified = SQLDb.Query("select is_verified from account"); */
-
-                if (IsVerified)
-                {
-                    this.Balance = this.Balance + depositAmount;
-
-                    if (this.IsNotFrozen == false)
-                        IsNotFrozen = true;
-                }
-            }
-        }
-
-        public void Withdraw(decimal withdrawAmount)
-        {
-            if (!IsClosed)
-            {
-                /* this.IsVerified = SQLDb.Query("select is_verified from account"); */
-
-                if (IsVerified)
-                {
-
-
-
-
-
-
-                    //DEFECT #3456 CO 02/23/2019
-                    //We weren't verified not frozen condition
-
-                    if (!IsNotFrozen)
-                    {
-                        throw new Exception("Your account is frozen. Contact branch.");
-                    }
-
-                    if (Balance < 0 || Balance < withdrawAmount)
-                    {
-                        throw new Exception("Not enough balance");
-                    }
-
-                    Balance -= withdrawAmount;
-                }
-            }
+            this.closeAccount = false;
+            this.substantiated = true;
         }
     }
 }
