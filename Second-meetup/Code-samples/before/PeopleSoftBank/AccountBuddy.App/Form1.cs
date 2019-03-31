@@ -19,7 +19,7 @@ namespace AccountBuddy.App
             InitializeComponent();
         }
 
-        private void createAccountButton_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             // vars init begins here
             bool fail = false;
@@ -33,10 +33,10 @@ namespace AccountBuddy.App
 
 
             acc.Id = Guid.NewGuid();
-            acc.NameOfAccountHolder = nameTextBox.Text;
-            acc.Uid = uidTextBox.Text;
-            acc.Addr = currentAddressTextBox.Text;
-            acc.AgeOfUser = ageTextBox.Text;
+            acc.NameOfAccountHolder = nametxt.Text;
+            acc.Uid = uidtextBox.Text;
+            acc.Addr = addrTB.Text;
+            acc.AgeOfUser = txtAge.Text;
 
             try
             {
@@ -103,7 +103,7 @@ namespace AccountBuddy.App
                         // service call to check if account is NRI
                             for (int i = 0; i < cntriesArray.Length; i++) {
                             var item = cntriesArray[i];
-                            if (uidTextBox.Text.Contains(item))
+                            if (uidtextBox.Text.Contains(item))
                             {
                                 fail = false;
                             }
@@ -132,10 +132,10 @@ namespace AccountBuddy.App
                 accountStatuslabel.ForeColor = Color.Red;
                 accountStatuslabel.Text = "Account created successfully.";
 
-                this.nameTextBox.Text = this.uidTextBox.Text = this.ageTextBox.Text = this.currentAddressTextBox.Text = string.Empty;
+                this.nametxt.Text = this.uidtextBox.Text = this.txtAge.Text = this.addrTB.Text = string.Empty;
                 accountListComboBox.DataSource = null;
                 accountListComboBox.DataSource = _accts;
-                this.accountListComboBox.DisplayMember = "Name";
+                this.accountListComboBox.DisplayMember = "NameOfAccountHolder";
                 this.accountListComboBox.ValueMember = "Id";
             }
         }

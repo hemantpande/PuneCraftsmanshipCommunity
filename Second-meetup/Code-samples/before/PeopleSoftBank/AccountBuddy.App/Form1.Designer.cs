@@ -31,181 +31,236 @@ namespace AccountBuddy.App
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.homePageTabControl = new System.Windows.Forms.TabControl();
-            this.createAccountTabPage = new System.Windows.Forms.TabPage();
+            this.tc1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtAge = new System.Windows.Forms.TextBox();
+            this.ageLable = new System.Windows.Forms.Label();
             this.accountStatuslabel = new System.Windows.Forms.Label();
-            this.createAccountButton = new System.Windows.Forms.Button();
-            this.currentAddressTextBox = new System.Windows.Forms.TextBox();
+            this.btn1 = new System.Windows.Forms.Button();
+            this.addrTB = new System.Windows.Forms.TextBox();
             this.addressLabel = new System.Windows.Forms.Label();
-            this.uidTextBox = new System.Windows.Forms.TextBox();
+            this.uidtextBox = new System.Windows.Forms.TextBox();
             this.uidLabel = new System.Windows.Forms.Label();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.nametxt = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.depositMoneyTabPage = new System.Windows.Forms.TabPage();
+            this.tp2 = new System.Windows.Forms.TabPage();
+            this.transactionTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.depositMoneyStatusLabel = new System.Windows.Forms.Label();
             this.accountListComboBox = new System.Windows.Forms.ComboBox();
             this.accountLabel = new System.Windows.Forms.Label();
             this.depositOrWithdrawButton = new System.Windows.Forms.Button();
             this.depositAmountLabel = new System.Windows.Forms.Label();
             this.amountTextBox = new System.Windows.Forms.TextBox();
-            this.ageLable = new System.Windows.Forms.Label();
-            this.ageTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.transactionTypeComboBox = new System.Windows.Forms.ComboBox();
             this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.homePageTabControl.SuspendLayout();
-            this.createAccountTabPage.SuspendLayout();
-            this.depositMoneyTabPage.SuspendLayout();
+            this.tc1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tp2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // homePageTabControl
+            // tc1
             // 
-            this.homePageTabControl.Controls.Add(this.createAccountTabPage);
-            this.homePageTabControl.Controls.Add(this.depositMoneyTabPage);
-            this.homePageTabControl.Location = new System.Drawing.Point(25, 26);
-            this.homePageTabControl.Name = "homePageTabControl";
-            this.homePageTabControl.SelectedIndex = 0;
-            this.homePageTabControl.Size = new System.Drawing.Size(747, 394);
-            this.homePageTabControl.TabIndex = 0;
+            this.tc1.Controls.Add(this.tabPage1);
+            this.tc1.Controls.Add(this.tp2);
+            this.tc1.Location = new System.Drawing.Point(33, 32);
+            this.tc1.Margin = new System.Windows.Forms.Padding(4);
+            this.tc1.Name = "tc1";
+            this.tc1.SelectedIndex = 0;
+            this.tc1.Size = new System.Drawing.Size(996, 485);
+            this.tc1.TabIndex = 0;
             // 
-            // createAccountTabPage
+            // tabPage1
             // 
-            this.createAccountTabPage.Controls.Add(this.ageTextBox);
-            this.createAccountTabPage.Controls.Add(this.ageLable);
-            this.createAccountTabPage.Controls.Add(this.accountStatuslabel);
-            this.createAccountTabPage.Controls.Add(this.createAccountButton);
-            this.createAccountTabPage.Controls.Add(this.currentAddressTextBox);
-            this.createAccountTabPage.Controls.Add(this.addressLabel);
-            this.createAccountTabPage.Controls.Add(this.uidTextBox);
-            this.createAccountTabPage.Controls.Add(this.uidLabel);
-            this.createAccountTabPage.Controls.Add(this.nameTextBox);
-            this.createAccountTabPage.Controls.Add(this.nameLabel);
-            this.createAccountTabPage.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createAccountTabPage.Location = new System.Drawing.Point(4, 22);
-            this.createAccountTabPage.Name = "createAccountTabPage";
-            this.createAccountTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.createAccountTabPage.Size = new System.Drawing.Size(739, 368);
-            this.createAccountTabPage.TabIndex = 0;
-            this.createAccountTabPage.Text = "Create account";
-            this.createAccountTabPage.UseVisualStyleBackColor = true;
+            this.tabPage1.Controls.Add(this.txtAge);
+            this.tabPage1.Controls.Add(this.ageLable);
+            this.tabPage1.Controls.Add(this.accountStatuslabel);
+            this.tabPage1.Controls.Add(this.btn1);
+            this.tabPage1.Controls.Add(this.addrTB);
+            this.tabPage1.Controls.Add(this.addressLabel);
+            this.tabPage1.Controls.Add(this.uidtextBox);
+            this.tabPage1.Controls.Add(this.uidLabel);
+            this.tabPage1.Controls.Add(this.nametxt);
+            this.tabPage1.Controls.Add(this.nameLabel);
+            this.tabPage1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(988, 456);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Create account";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtAge
+            // 
+            this.txtAge.Location = new System.Drawing.Point(211, 172);
+            this.txtAge.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(244, 28);
+            this.txtAge.TabIndex = 4;
+            // 
+            // ageLable
+            // 
+            this.ageLable.AutoSize = true;
+            this.ageLable.Location = new System.Drawing.Point(69, 172);
+            this.ageLable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ageLable.Name = "ageLable";
+            this.ageLable.Size = new System.Drawing.Size(36, 21);
+            this.ageLable.TabIndex = 8;
+            this.ageLable.Text = "Age";
             // 
             // accountStatuslabel
             // 
             this.accountStatuslabel.AutoSize = true;
-            this.accountStatuslabel.Location = new System.Drawing.Point(49, 14);
+            this.accountStatuslabel.Location = new System.Drawing.Point(65, 17);
+            this.accountStatuslabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.accountStatuslabel.Name = "accountStatuslabel";
-            this.accountStatuslabel.Size = new System.Drawing.Size(0, 17);
+            this.accountStatuslabel.Size = new System.Drawing.Size(0, 21);
             this.accountStatuslabel.TabIndex = 7;
             // 
-            // createAccountButton
+            // btn1
             // 
-            this.createAccountButton.Location = new System.Drawing.Point(488, 298);
-            this.createAccountButton.Name = "createAccountButton";
-            this.createAccountButton.Size = new System.Drawing.Size(75, 28);
-            this.createAccountButton.TabIndex = 6;
-            this.createAccountButton.Text = "Create";
-            this.createAccountButton.UseVisualStyleBackColor = true;
-            this.createAccountButton.Click += new System.EventHandler(this.createAccountButton_Click);
+            this.btn1.Location = new System.Drawing.Point(651, 367);
+            this.btn1.Margin = new System.Windows.Forms.Padding(4);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(100, 34);
+            this.btn1.TabIndex = 6;
+            this.btn1.Text = "Create";
+            this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // currentAddressTextBox
+            // addrTB
             // 
-            this.currentAddressTextBox.Location = new System.Drawing.Point(158, 198);
-            this.currentAddressTextBox.Multiline = true;
-            this.currentAddressTextBox.Name = "currentAddressTextBox";
-            this.currentAddressTextBox.Size = new System.Drawing.Size(184, 67);
-            this.currentAddressTextBox.TabIndex = 5;
+            this.addrTB.Location = new System.Drawing.Point(211, 244);
+            this.addrTB.Margin = new System.Windows.Forms.Padding(4);
+            this.addrTB.Multiline = true;
+            this.addrTB.Name = "addrTB";
+            this.addrTB.Size = new System.Drawing.Size(244, 82);
+            this.addrTB.TabIndex = 5;
             // 
             // addressLabel
             // 
             this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(52, 198);
+            this.addressLabel.Location = new System.Drawing.Point(69, 244);
+            this.addressLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.addressLabel.Name = "addressLabel";
-            this.addressLabel.Size = new System.Drawing.Size(97, 17);
+            this.addressLabel.Size = new System.Drawing.Size(121, 21);
             this.addressLabel.TabIndex = 4;
             this.addressLabel.Text = "Current address";
             // 
-            // uidTextBox
+            // uidtextBox
             // 
-            this.uidTextBox.Location = new System.Drawing.Point(158, 93);
-            this.uidTextBox.Name = "uidTextBox";
-            this.uidTextBox.Size = new System.Drawing.Size(184, 24);
-            this.uidTextBox.TabIndex = 3;
+            this.uidtextBox.Location = new System.Drawing.Point(211, 114);
+            this.uidtextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.uidtextBox.Name = "uidtextBox";
+            this.uidtextBox.Size = new System.Drawing.Size(244, 28);
+            this.uidtextBox.TabIndex = 3;
             // 
             // uidLabel
             // 
             this.uidLabel.AutoSize = true;
-            this.uidLabel.Location = new System.Drawing.Point(49, 96);
+            this.uidLabel.Location = new System.Drawing.Point(65, 118);
+            this.uidLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.uidLabel.Name = "uidLabel";
-            this.uidLabel.Size = new System.Drawing.Size(103, 17);
+            this.uidLabel.Size = new System.Drawing.Size(126, 21);
             this.uidLabel.TabIndex = 2;
             this.uidLabel.Text = "Unique Identifier";
             // 
-            // nameTextBox
+            // nametxt
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(158, 53);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(184, 24);
-            this.nameTextBox.TabIndex = 1;
+            this.nametxt.Location = new System.Drawing.Point(211, 65);
+            this.nametxt.Margin = new System.Windows.Forms.Padding(4);
+            this.nametxt.Name = "nametxt";
+            this.nametxt.Size = new System.Drawing.Size(244, 28);
+            this.nametxt.TabIndex = 1;
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(49, 56);
+            this.nameLabel.Location = new System.Drawing.Point(65, 69);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(42, 17);
+            this.nameLabel.Size = new System.Drawing.Size(51, 21);
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "Name";
             // 
-            // depositMoneyTabPage
+            // tp2
             // 
-            this.depositMoneyTabPage.Controls.Add(this.transactionTypeComboBox);
-            this.depositMoneyTabPage.Controls.Add(this.label1);
-            this.depositMoneyTabPage.Controls.Add(this.depositMoneyStatusLabel);
-            this.depositMoneyTabPage.Controls.Add(this.accountListComboBox);
-            this.depositMoneyTabPage.Controls.Add(this.accountLabel);
-            this.depositMoneyTabPage.Controls.Add(this.depositOrWithdrawButton);
-            this.depositMoneyTabPage.Controls.Add(this.depositAmountLabel);
-            this.depositMoneyTabPage.Controls.Add(this.amountTextBox);
-            this.depositMoneyTabPage.Font = new System.Drawing.Font("Calibri", 10F);
-            this.depositMoneyTabPage.Location = new System.Drawing.Point(4, 22);
-            this.depositMoneyTabPage.Name = "depositMoneyTabPage";
-            this.depositMoneyTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.depositMoneyTabPage.Size = new System.Drawing.Size(739, 368);
-            this.depositMoneyTabPage.TabIndex = 1;
-            this.depositMoneyTabPage.Text = " Deposit and withdraw money";
-            this.depositMoneyTabPage.UseVisualStyleBackColor = true;
+            this.tp2.Controls.Add(this.transactionTypeComboBox);
+            this.tp2.Controls.Add(this.label1);
+            this.tp2.Controls.Add(this.depositMoneyStatusLabel);
+            this.tp2.Controls.Add(this.accountListComboBox);
+            this.tp2.Controls.Add(this.accountLabel);
+            this.tp2.Controls.Add(this.depositOrWithdrawButton);
+            this.tp2.Controls.Add(this.depositAmountLabel);
+            this.tp2.Controls.Add(this.amountTextBox);
+            this.tp2.Font = new System.Drawing.Font("Calibri", 10F);
+            this.tp2.Location = new System.Drawing.Point(4, 25);
+            this.tp2.Margin = new System.Windows.Forms.Padding(4);
+            this.tp2.Name = "tp2";
+            this.tp2.Padding = new System.Windows.Forms.Padding(4);
+            this.tp2.Size = new System.Drawing.Size(988, 456);
+            this.tp2.TabIndex = 1;
+            this.tp2.Text = " Deposit and withdraw money";
+            this.tp2.UseVisualStyleBackColor = true;
+            // 
+            // transactionTypeComboBox
+            // 
+            this.transactionTypeComboBox.FormattingEnabled = true;
+            this.transactionTypeComboBox.Items.AddRange(new object[] {
+            "Deposit",
+            "Withdraw"});
+            this.transactionTypeComboBox.Location = new System.Drawing.Point(199, 112);
+            this.transactionTypeComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.transactionTypeComboBox.Name = "transactionTypeComboBox";
+            this.transactionTypeComboBox.Size = new System.Drawing.Size(160, 29);
+            this.transactionTypeComboBox.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(53, 112);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 21);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Transaction type";
             // 
             // depositMoneyStatusLabel
             // 
             this.depositMoneyStatusLabel.AutoSize = true;
-            this.depositMoneyStatusLabel.Location = new System.Drawing.Point(46, 217);
+            this.depositMoneyStatusLabel.Location = new System.Drawing.Point(61, 267);
+            this.depositMoneyStatusLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.depositMoneyStatusLabel.Name = "depositMoneyStatusLabel";
-            this.depositMoneyStatusLabel.Size = new System.Drawing.Size(0, 17);
+            this.depositMoneyStatusLabel.Size = new System.Drawing.Size(0, 21);
             this.depositMoneyStatusLabel.TabIndex = 5;
             // 
             // accountListComboBox
             // 
             this.accountListComboBox.FormattingEnabled = true;
-            this.accountListComboBox.Location = new System.Drawing.Point(149, 46);
+            this.accountListComboBox.Location = new System.Drawing.Point(199, 57);
+            this.accountListComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.accountListComboBox.Name = "accountListComboBox";
-            this.accountListComboBox.Size = new System.Drawing.Size(121, 23);
+            this.accountListComboBox.Size = new System.Drawing.Size(160, 29);
             this.accountListComboBox.TabIndex = 4;
             // 
             // accountLabel
             // 
             this.accountLabel.AutoSize = true;
-            this.accountLabel.Location = new System.Drawing.Point(43, 49);
+            this.accountLabel.Location = new System.Drawing.Point(57, 60);
+            this.accountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.accountLabel.Name = "accountLabel";
-            this.accountLabel.Size = new System.Drawing.Size(54, 17);
+            this.accountLabel.Size = new System.Drawing.Size(67, 21);
             this.accountLabel.TabIndex = 3;
             this.accountLabel.Text = "Account";
             // 
             // depositOrWithdrawButton
             // 
-            this.depositOrWithdrawButton.Location = new System.Drawing.Point(195, 182);
+            this.depositOrWithdrawButton.Location = new System.Drawing.Point(260, 224);
+            this.depositOrWithdrawButton.Margin = new System.Windows.Forms.Padding(4);
             this.depositOrWithdrawButton.Name = "depositOrWithdrawButton";
-            this.depositOrWithdrawButton.Size = new System.Drawing.Size(75, 28);
+            this.depositOrWithdrawButton.Size = new System.Drawing.Size(100, 34);
             this.depositOrWithdrawButton.TabIndex = 2;
             this.depositOrWithdrawButton.Text = "Submit";
             this.depositOrWithdrawButton.UseVisualStyleBackColor = true;
@@ -214,54 +269,20 @@ namespace AccountBuddy.App
             // depositAmountLabel
             // 
             this.depositAmountLabel.AutoSize = true;
-            this.depositAmountLabel.Location = new System.Drawing.Point(40, 130);
+            this.depositAmountLabel.Location = new System.Drawing.Point(53, 160);
+            this.depositAmountLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.depositAmountLabel.Name = "depositAmountLabel";
-            this.depositAmountLabel.Size = new System.Drawing.Size(53, 17);
+            this.depositAmountLabel.Size = new System.Drawing.Size(67, 21);
             this.depositAmountLabel.TabIndex = 1;
             this.depositAmountLabel.Text = "Amount";
             // 
             // amountTextBox
             // 
-            this.amountTextBox.Location = new System.Drawing.Point(149, 127);
+            this.amountTextBox.Location = new System.Drawing.Point(199, 156);
+            this.amountTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.amountTextBox.Name = "amountTextBox";
-            this.amountTextBox.Size = new System.Drawing.Size(121, 24);
+            this.amountTextBox.Size = new System.Drawing.Size(160, 28);
             this.amountTextBox.TabIndex = 0;
-            // 
-            // ageLable
-            // 
-            this.ageLable.AutoSize = true;
-            this.ageLable.Location = new System.Drawing.Point(52, 140);
-            this.ageLable.Name = "ageLable";
-            this.ageLable.Size = new System.Drawing.Size(30, 17);
-            this.ageLable.TabIndex = 8;
-            this.ageLable.Text = "Age";
-            // 
-            // ageTextBox
-            // 
-            this.ageTextBox.Location = new System.Drawing.Point(158, 140);
-            this.ageTextBox.Name = "ageTextBox";
-            this.ageTextBox.Size = new System.Drawing.Size(184, 24);
-            this.ageTextBox.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 91);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 17);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Transaction type";
-            // 
-            // transactionTypeComboBox
-            // 
-            this.transactionTypeComboBox.FormattingEnabled = true;
-            this.transactionTypeComboBox.Items.AddRange(new object[] {
-            "Deposit",
-            "Withdraw"});
-            this.transactionTypeComboBox.Location = new System.Drawing.Point(149, 91);
-            this.transactionTypeComboBox.Name = "transactionTypeComboBox";
-            this.transactionTypeComboBox.Size = new System.Drawing.Size(121, 23);
-            this.transactionTypeComboBox.TabIndex = 7;
             // 
             // programBindingSource
             // 
@@ -269,18 +290,19 @@ namespace AccountBuddy.App
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.homePageTabControl);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.tc1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
             this.Text = "PeopleSoft bank";
-            this.homePageTabControl.ResumeLayout(false);
-            this.createAccountTabPage.ResumeLayout(false);
-            this.createAccountTabPage.PerformLayout();
-            this.depositMoneyTabPage.ResumeLayout(false);
-            this.depositMoneyTabPage.PerformLayout();
+            this.tc1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tp2.ResumeLayout(false);
+            this.tp2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -288,15 +310,15 @@ namespace AccountBuddy.App
 
         #endregion
 
-        private System.Windows.Forms.TabControl homePageTabControl;
-        private System.Windows.Forms.TabPage createAccountTabPage;
-        private System.Windows.Forms.TabPage depositMoneyTabPage;
-        private System.Windows.Forms.TextBox uidTextBox;
+        private System.Windows.Forms.TabControl tc1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tp2;
+        private System.Windows.Forms.TextBox uidtextBox;
         private System.Windows.Forms.Label uidLabel;
-        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.TextBox nametxt;
         private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.Button createAccountButton;
-        private System.Windows.Forms.TextBox currentAddressTextBox;
+        private System.Windows.Forms.Button btn1;
+        private System.Windows.Forms.TextBox addrTB;
         private System.Windows.Forms.Label addressLabel;
         private System.Windows.Forms.Label depositAmountLabel;
         private System.Windows.Forms.TextBox amountTextBox;
@@ -306,7 +328,7 @@ namespace AccountBuddy.App
         private System.Windows.Forms.BindingSource programBindingSource;
         private System.Windows.Forms.Label accountStatuslabel;
         private System.Windows.Forms.Label depositMoneyStatusLabel;
-        private System.Windows.Forms.TextBox ageTextBox;
+        private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.Label ageLable;
         private System.Windows.Forms.ComboBox transactionTypeComboBox;
         private System.Windows.Forms.Label label1;
