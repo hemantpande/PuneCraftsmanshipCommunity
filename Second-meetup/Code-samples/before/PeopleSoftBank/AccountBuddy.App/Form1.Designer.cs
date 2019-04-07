@@ -44,14 +44,14 @@ namespace AccountBuddy.App
             this.nametxt = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.tp2 = new System.Windows.Forms.TabPage();
-            this.transactionTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.trnsTypCombo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.depositMoneyStatusLabel = new System.Windows.Forms.Label();
-            this.accountListComboBox = new System.Windows.Forms.ComboBox();
+            this.accListCB = new System.Windows.Forms.ComboBox();
             this.accountLabel = new System.Windows.Forms.Label();
             this.depositOrWithdrawButton = new System.Windows.Forms.Button();
             this.depositAmountLabel = new System.Windows.Forms.Label();
-            this.amountTextBox = new System.Windows.Forms.TextBox();
+            this.amtTxt = new System.Windows.Forms.TextBox();
             this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tc1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -187,14 +187,14 @@ namespace AccountBuddy.App
             // 
             // tp2
             // 
-            this.tp2.Controls.Add(this.transactionTypeComboBox);
+            this.tp2.Controls.Add(this.trnsTypCombo);
             this.tp2.Controls.Add(this.label1);
             this.tp2.Controls.Add(this.depositMoneyStatusLabel);
-            this.tp2.Controls.Add(this.accountListComboBox);
+            this.tp2.Controls.Add(this.accListCB);
             this.tp2.Controls.Add(this.accountLabel);
             this.tp2.Controls.Add(this.depositOrWithdrawButton);
             this.tp2.Controls.Add(this.depositAmountLabel);
-            this.tp2.Controls.Add(this.amountTextBox);
+            this.tp2.Controls.Add(this.amtTxt);
             this.tp2.Font = new System.Drawing.Font("Calibri", 10F);
             this.tp2.Location = new System.Drawing.Point(4, 25);
             this.tp2.Margin = new System.Windows.Forms.Padding(4);
@@ -205,17 +205,17 @@ namespace AccountBuddy.App
             this.tp2.Text = " Deposit and withdraw money";
             this.tp2.UseVisualStyleBackColor = true;
             // 
-            // transactionTypeComboBox
+            // trnsTypCombo
             // 
-            this.transactionTypeComboBox.FormattingEnabled = true;
-            this.transactionTypeComboBox.Items.AddRange(new object[] {
+            this.trnsTypCombo.FormattingEnabled = true;
+            this.trnsTypCombo.Items.AddRange(new object[] {
             "Deposit",
             "Withdraw"});
-            this.transactionTypeComboBox.Location = new System.Drawing.Point(199, 112);
-            this.transactionTypeComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.transactionTypeComboBox.Name = "transactionTypeComboBox";
-            this.transactionTypeComboBox.Size = new System.Drawing.Size(160, 29);
-            this.transactionTypeComboBox.TabIndex = 7;
+            this.trnsTypCombo.Location = new System.Drawing.Point(199, 112);
+            this.trnsTypCombo.Margin = new System.Windows.Forms.Padding(4);
+            this.trnsTypCombo.Name = "trnsTypCombo";
+            this.trnsTypCombo.Size = new System.Drawing.Size(160, 29);
+            this.trnsTypCombo.TabIndex = 7;
             // 
             // label1
             // 
@@ -236,14 +236,14 @@ namespace AccountBuddy.App
             this.depositMoneyStatusLabel.Size = new System.Drawing.Size(0, 21);
             this.depositMoneyStatusLabel.TabIndex = 5;
             // 
-            // accountListComboBox
+            // accListCB
             // 
-            this.accountListComboBox.FormattingEnabled = true;
-            this.accountListComboBox.Location = new System.Drawing.Point(199, 57);
-            this.accountListComboBox.Margin = new System.Windows.Forms.Padding(4);
-            this.accountListComboBox.Name = "accountListComboBox";
-            this.accountListComboBox.Size = new System.Drawing.Size(160, 29);
-            this.accountListComboBox.TabIndex = 4;
+            this.accListCB.FormattingEnabled = true;
+            this.accListCB.Location = new System.Drawing.Point(199, 57);
+            this.accListCB.Margin = new System.Windows.Forms.Padding(4);
+            this.accListCB.Name = "accListCB";
+            this.accListCB.Size = new System.Drawing.Size(160, 29);
+            this.accListCB.TabIndex = 4;
             // 
             // accountLabel
             // 
@@ -276,13 +276,13 @@ namespace AccountBuddy.App
             this.depositAmountLabel.TabIndex = 1;
             this.depositAmountLabel.Text = "Amount";
             // 
-            // amountTextBox
+            // amtTxt
             // 
-            this.amountTextBox.Location = new System.Drawing.Point(199, 156);
-            this.amountTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.amountTextBox.Name = "amountTextBox";
-            this.amountTextBox.Size = new System.Drawing.Size(160, 28);
-            this.amountTextBox.TabIndex = 0;
+            this.amtTxt.Location = new System.Drawing.Point(199, 156);
+            this.amtTxt.Margin = new System.Windows.Forms.Padding(4);
+            this.amtTxt.Name = "amtTxt";
+            this.amtTxt.Size = new System.Drawing.Size(160, 28);
+            this.amtTxt.TabIndex = 0;
             // 
             // programBindingSource
             // 
@@ -321,16 +321,16 @@ namespace AccountBuddy.App
         private System.Windows.Forms.TextBox addrTB;
         private System.Windows.Forms.Label addressLabel;
         private System.Windows.Forms.Label depositAmountLabel;
-        private System.Windows.Forms.TextBox amountTextBox;
+        private System.Windows.Forms.TextBox amtTxt;
         private System.Windows.Forms.Button depositOrWithdrawButton;
-        private System.Windows.Forms.ComboBox accountListComboBox;
+        private System.Windows.Forms.ComboBox accListCB;
         private System.Windows.Forms.Label accountLabel;
         private System.Windows.Forms.BindingSource programBindingSource;
         private System.Windows.Forms.Label accountStatuslabel;
         private System.Windows.Forms.Label depositMoneyStatusLabel;
         private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.Label ageLable;
-        private System.Windows.Forms.ComboBox transactionTypeComboBox;
+        private System.Windows.Forms.ComboBox trnsTypCombo;
         private System.Windows.Forms.Label label1;
     }
 }

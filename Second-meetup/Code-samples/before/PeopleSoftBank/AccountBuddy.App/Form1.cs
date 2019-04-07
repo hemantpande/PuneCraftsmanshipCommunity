@@ -133,19 +133,19 @@ namespace AccountBuddy.App
                 accountStatuslabel.Text = "Account created successfully.";
 
                 this.nametxt.Text = this.uidtextBox.Text = this.txtAge.Text = this.addrTB.Text = string.Empty;
-                accountListComboBox.DataSource = null;
-                accountListComboBox.DataSource = _accts;
-                this.accountListComboBox.DisplayMember = "NameOfAccountHolder";
-                this.accountListComboBox.ValueMember = "Id";
+                accListCB.DataSource = null;
+                accListCB.DataSource = _accts;
+                this.accListCB.DisplayMember = "NameOfAccountHolder";
+                this.accListCB.ValueMember = "Id";
             }
         }
 
         private void depositOrWithdrawButton_Click(object sender, EventArgs e)
         {
-            var selectedAccount = (Guid)accountListComboBox.SelectedValue;
+            var selectedAccount = (Guid)accListCB.SelectedValue;
             var account = _accts.First(a => a.Id == selectedAccount);
 
-            switch (transactionTypeComboBox.SelectedItem)
+            switch (trnsTypCombo.SelectedItem)
             {
                 case "Deposit":
                     if (account.IsNotFrozen && !account.closeAccount)
@@ -156,7 +156,7 @@ namespace AccountBuddy.App
 
                         if (account.substantiated)
                         {
-                            account.Balance = account.Balance + Convert.ToDecimal(amountTextBox.Text);
+                            account.Balance = account.Balance + Convert.ToDecimal(amtTxt.Text);
 
                             if (!account.IsNotFrozen)
                                 account.IsNotFrozen = true;
@@ -187,13 +187,13 @@ namespace AccountBuddy.App
                                 break;
                             }
 
-                            if (account.Balance < 0 || account.Balance < Convert.ToDecimal(amountTextBox.Text))
+                            if (account.Balance < 0 || account.Balance < Convert.ToDecimal(amtTxt.Text))
                             {
                                 depositMoneyStatusLabel.Text = string.Format("Not enough balance");
                                 break;
                             }
 
-                            account.Balance = account.Balance + Convert.ToDecimal(amountTextBox.Text);
+                            account.Balance = account.Balance - Convert.ToDecimal(amtTxt.Text);
                         }
                     }
 
