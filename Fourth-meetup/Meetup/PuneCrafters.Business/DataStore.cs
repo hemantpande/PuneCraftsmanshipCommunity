@@ -1,11 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PuneCrafters.Domain;
 
 namespace PuneCrafters.Business
 {
     public static class DataStore
     {
+        private static List<Meetup> meetups = new List<Meetup>();
+
+        private static List<User> users = new List<User>();
+
         static DataStore()
+        {
+            SetupMeetups();
+            SetupUsers();
+        }
+
+        public static void CreateMeetup(Meetup meetup)
+        {
+            meetups.Add(meetup);
+        }
+
+        public static IEnumerable<Meetup> GetMeetups()
+        {
+            return meetups;
+        }
+
+        public static User GetOrganizer()
+        {
+            return users.Find(x => x.Role == GlobalConstants.ORGANIZER_ROLE);
+        }
+
+        public static User GetParticipant()
+        {
+            return users.Find(x => x.Role == GlobalConstants.PARTICIPANT_ROLE);
+        }
+
+        private static void SetupUsers()
         {
             users.Add(new User
             {
@@ -27,27 +58,27 @@ namespace PuneCrafters.Business
             });
         }
 
-        private static List<Meetup> meetups = new List<Meetup>();
-        private static List<User> users = new List<User>();
-
-        public static void CreateMeetup(Meetup meetup)
+        private static void SetupMeetups()
         {
-            meetups.Add(meetup);
-        }
+            meetups.Add(new Meetup
+            {
+                Id = 1,
+                Date = DateTime.Now.AddDays(35),
+                Description = "The London Software Craftsmanship Community (LSCC) was founded with the purpose of improving and mastering the craft of software development.",
+                Title = "Software Crafters North",
+                ParticipantsCount = 3456,
+                LocationId = 43276
+            });
 
-        public static IEnumerable<Meetup> GetMeetups()
-        {
-            return meetups;
-        }
-
-        public static User GetOrganizer()
-        {
-            return users.Find(x => x.Role == GlobalConstants.ORGANIZER_ROLE);
-        }
-
-        public static User GetParticipant()
-        {
-            return users.Find(x => x.Role == GlobalConstants.PARTICIPANT_ROLE);
+            meetups.Add(new Meetup
+            {
+                Id = 2,
+                Date = DateTime.Now.AddDays(5),
+                Description = "DEVDAY (https://devday.in) is a monthly informal event for developers to share their experiences, ideas, opinions & perspectives about technology.",
+                Title = "DevDay Pune",
+                ParticipantsCount = 21,
+                LocationId = 411014
+            });
         }
     }
 }

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PuneCrafters.Domain.Meetup>
+
+@{
+    ViewBag.Title = "Upcoming events";
+}
+
+<h2>Welcome Participant</h2>
+
+<p>
+    <h4>Upcoming events</h4>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ParticipantsCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LocationId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParticipantsCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationId)
+            </td>
+            <td>
+                @Html.ActionLink("Sign Up", "SignUp", new { id = item.Id }, new { @class = "btn btn-primary"   }) 
+            </td>
+        </tr>
+    }
+</table>

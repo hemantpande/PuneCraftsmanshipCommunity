@@ -3,8 +3,8 @@
 namespace PuneCrafters.Business
 {
     public class Registration
-    { 
-        void SignupForMeetup(MeetupParticipant meetupParticipant)
+    {
+        public void SignupForMeetup(MeetupParticipant meetupParticipant)
         {
         }
     }
