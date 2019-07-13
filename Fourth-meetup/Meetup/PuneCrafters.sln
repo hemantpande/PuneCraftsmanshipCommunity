@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuneCrafters.Business", "PuneCrafters.Business\PuneCrafters.Business.csproj", "{1E0A3EAE-BE19-4A45-AE91-9326730DF072}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuneCrafters.Domain", "PuneCrafters.Domain\PuneCrafters.Domain.csproj", "{093E3A56-2403-4600-ACD1-06A134A92BA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1E0A3EAE-BE19-4A45-AE91-9326730DF072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E0A3EAE-BE19-4A45-AE91-9326730DF072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E0A3EAE-BE19-4A45-AE91-9326730DF072}.Release|Any CPU.Build.0 = Release|Any CPU
+		{093E3A56-2403-4600-ACD1-06A134A92BA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{093E3A56-2403-4600-ACD1-06A134A92BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{093E3A56-2403-4600-ACD1-06A134A92BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{093E3A56-2403-4600-ACD1-06A134A92BA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

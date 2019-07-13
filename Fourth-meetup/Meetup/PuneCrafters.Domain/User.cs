@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PuneCrafters.Business
+namespace PuneCrafters.Domain
 {
     public class User
     {

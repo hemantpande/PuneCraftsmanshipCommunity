@@ -2,9 +2,9 @@
 
 namespace PuneCrafters.Business
 {
-    public class Scheduler
+    public class Registration
     { 
-        void ScheduleMeetup(Meetup meetup)
+        void SignupForMeetup(MeetupParticipant meetupParticipant)
         {
         }
     }
