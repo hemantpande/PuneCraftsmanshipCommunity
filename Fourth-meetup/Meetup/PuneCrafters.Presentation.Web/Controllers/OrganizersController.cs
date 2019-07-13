@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using PuneCrafters.Business;
+using PuneCrafters.Domain;
+using PuneCrafters.Presentation.Web.Models;
 
 namespace PuneCrafters.Presentation.Web.Controllers
 {
@@ -13,14 +13,31 @@ namespace PuneCrafters.Presentation.Web.Controllers
             return View();
         }
 
+        public ActionResult ScheduledSuccess()
+        {
+            var recent = DataStore.GetMeetups().Last();
+            return View(recent);
+        }
+
         [HttpPost]
-        public ActionResult Schedule(FormCollection collection)
+        public ActionResult Schedule(MeetupModel model)
         {
             try
             {
-                // TODO: Add insert logic here
+                var organizer = DataStore.GetOrganizer();
 
-                return RedirectToAction("Index");
+                var meetup = new Meetup
+                {
+                    Title = model.Title,
+                    Date = model.Date,
+                    Description = model.Description,
+                    ParticipantsCount = model.ParticipantsCount,
+                    LocationId = organizer.LocationId
+                };
+
+                Scheduler scheduler = new Scheduler();
+                scheduler.ScheduleMeetup(meetup);
+                return RedirectToAction("ScheduledSuccess");
             }
             catch
             {
