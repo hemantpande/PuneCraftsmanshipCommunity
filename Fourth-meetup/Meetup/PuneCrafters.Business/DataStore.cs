@@ -21,14 +21,14 @@ namespace PuneCrafters.Business
             meetups.Add(meetup);
         }
 
+        public static Meetup GetMeetup(int id)
+        {
+            return meetups.Find(x => x.Id == id);
+        }
+
         public static IEnumerable<Meetup> GetMeetups()
         {
             return meetups;
-        }
-
-        public static Meetup GetMeetup(int id)
-        {
-            return meetups.Find(x=>x.Id == id);
         }
 
         public static User GetOrganizer()
@@ -39,28 +39,6 @@ namespace PuneCrafters.Business
         public static User GetParticipant()
         {
             return users.Find(x => x.Role == GlobalConstants.PARTICIPANT_ROLE);
-        }
-
-        private static void SetupUsers()
-        {
-            users.Add(new User
-            {
-                Email = "John@Doe.com",
-                Id = User.NextAvailableId,
-                LocationId = 1122,
-                Name = "John Doe",
-                Phone = "9970123233",
-                Role = GlobalConstants.ORGANIZER_ROLE
-            });
-            users.Add(new User
-            {
-                Email = "Jane@Doe.com",
-                Id = User.NextAvailableId,
-                LocationId = 3344,
-                Name = "Jane Doe",
-                Phone = "7731962462",
-                Role = GlobalConstants.PARTICIPANT_ROLE
-            });
         }
 
         private static void SetupMeetups()
@@ -83,6 +61,28 @@ namespace PuneCrafters.Business
                 Title = "DevDay Pune",
                 ParticipantsCount = 21,
                 LocationId = 411014
+            });
+        }
+
+        private static void SetupUsers()
+        {
+            users.Add(new User
+            {
+                Email = "John@Doe.com",
+                Id = User.NextAvailableId,
+                LocationId = 1122,
+                Name = "John Doe",
+                Phone = "9970123233",
+                Role = GlobalConstants.ORGANIZER_ROLE
+            });
+            users.Add(new User
+            {
+                Email = "Jane@Doe.com",
+                Id = User.NextAvailableId,
+                LocationId = 3344,
+                Name = "Jane Doe",
+                Phone = "7731962462",
+                Role = GlobalConstants.PARTICIPANT_ROLE
             });
         }
     }

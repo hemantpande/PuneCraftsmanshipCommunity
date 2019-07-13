@@ -2,6 +2,13 @@
 
 namespace PuneCrafters.Domain
 {
+    public enum MembershipPlan
+    {
+        Free,
+        Silver,
+        Gold
+    }
+
     public class Meetup
     {
         public static int NextAvailableId { get; private set; }
