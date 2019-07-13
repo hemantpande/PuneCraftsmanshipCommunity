@@ -24,10 +24,12 @@ namespace PuneCrafters.Presentation.Web.Controllers
         {
             try
             {
+                // TODO: Let's not have any organizer role. Any user can start a meetup, and then that user becomes the organizer. Users organization rights are affected by their membership.
                 var organizer = DataStore.GetOrganizer();
 
                 var meetup = new Meetup
                 {
+                    // TODO: Let's have the data store figure out the new ID after creating?
                     Id = Meetup.NextAvailableId,
                     Title = model.Title,
                     Date = model.Date,
