@@ -6,6 +6,7 @@ namespace PuneCrafters.Business
     {
         public void SignupForMeetup(MeetupParticipant meetupParticipant)
         {
+            DataStore.SignupForMeetup(meetupParticipant);
         }
     }
 }

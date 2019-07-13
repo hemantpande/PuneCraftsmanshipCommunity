@@ -33,7 +33,9 @@ namespace PuneCrafters.Presentation.Web.Controllers
 
         public ActionResult SignupForMeetup()
         {
-            return View(DataStore.GetMeetups());
+            var meetups = DataStore.GetMeetups();
+
+            return View(meetups);
         }
     }
 }

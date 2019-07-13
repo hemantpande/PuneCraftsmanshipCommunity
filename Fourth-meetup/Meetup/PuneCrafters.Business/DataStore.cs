@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PuneCrafters.Domain;
 
 namespace PuneCrafters.Business
@@ -7,7 +8,7 @@ namespace PuneCrafters.Business
     public static class DataStore
     {
         private static List<Meetup> meetups = new List<Meetup>();
-
+        private static List<MeetupParticipant> participants = new List<MeetupParticipant>();
         private static List<User> users = new List<User>();
 
         static DataStore()
@@ -39,6 +40,16 @@ namespace PuneCrafters.Business
         public static User GetParticipant()
         {
             return users.Find(x => x.Role == GlobalConstants.PARTICIPANT_ROLE);
+        }
+
+        public static void SignupForMeetup(MeetupParticipant participant)
+        {
+            participants.Add(participant);
+        }
+
+        public static IEnumerable<MeetupParticipant> GetSignedupMeetupsFor(int participantId)
+        {
+            return participants.Where(x => x.UserId == participantId);
         }
 
         private static void SetupMeetups()
