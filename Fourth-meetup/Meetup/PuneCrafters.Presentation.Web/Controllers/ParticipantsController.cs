@@ -7,7 +7,7 @@ namespace PuneCrafters.Presentation.Web.Controllers
 {
     public class ParticipantsController : Controller
     {
-        [HttpPost]
+        [HttpGet]
         public ActionResult SignUp(int id)
         {
             try
@@ -21,8 +21,9 @@ namespace PuneCrafters.Presentation.Web.Controllers
 
                 var registration = new Registration();
                 registration.SignupForMeetup(participant);
+                var meetup = DataStore.GetMeetup(id);
 
-                return RedirectToAction("Index");
+                return View("SignUpSuccess", meetup);
             }
             catch
             {

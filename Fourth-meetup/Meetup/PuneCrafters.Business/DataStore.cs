@@ -26,6 +26,11 @@ namespace PuneCrafters.Business
             return meetups;
         }
 
+        public static Meetup GetMeetup(int id)
+        {
+            return meetups.Find(x=>x.Id == id);
+        }
+
         public static User GetOrganizer()
         {
             return users.Find(x => x.Role == GlobalConstants.ORGANIZER_ROLE);
@@ -41,7 +46,7 @@ namespace PuneCrafters.Business
             users.Add(new User
             {
                 Email = "John@Doe.com",
-                Id = 100,
+                Id = User.NextAvailableId,
                 LocationId = 1122,
                 Name = "John Doe",
                 Phone = "9970123233",
@@ -50,7 +55,7 @@ namespace PuneCrafters.Business
             users.Add(new User
             {
                 Email = "Jane@Doe.com",
-                Id = 200,
+                Id = User.NextAvailableId,
                 LocationId = 3344,
                 Name = "Jane Doe",
                 Phone = "7731962462",
@@ -62,7 +67,7 @@ namespace PuneCrafters.Business
         {
             meetups.Add(new Meetup
             {
-                Id = 1,
+                Id = Meetup.NextAvailableId,
                 Date = DateTime.Now.AddDays(35),
                 Description = "The London Software Craftsmanship Community (LSCC) was founded with the purpose of improving and mastering the craft of software development.",
                 Title = "Software Crafters North",
@@ -72,7 +77,7 @@ namespace PuneCrafters.Business
 
             meetups.Add(new Meetup
             {
-                Id = 2,
+                Id = Meetup.NextAvailableId,
                 Date = DateTime.Now.AddDays(5),
                 Description = "DEVDAY (https://devday.in) is a monthly informal event for developers to share their experiences, ideas, opinions & perspectives about technology.",
                 Title = "DevDay Pune",

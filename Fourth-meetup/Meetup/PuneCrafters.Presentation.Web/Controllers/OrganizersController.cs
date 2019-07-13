@@ -28,6 +28,7 @@ namespace PuneCrafters.Presentation.Web.Controllers
 
                 var meetup = new Meetup
                 {
+                    Id = Meetup.NextAvailableId,
                     Title = model.Title,
                     Date = model.Date,
                     Description = model.Description,

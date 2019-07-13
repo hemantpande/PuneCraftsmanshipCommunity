@@ -1,13 +1,13 @@
 ﻿@model PuneCrafters.Domain.Meetup
 
 @{
-    ViewBag.Title = "ScheduledSuccess";
+    ViewBag.Title = "SignUpSuccess";
 }
 
-<h2> Hey, Organizer!</h2>
+<h2>Dear participant</h2>
 
 <div>
-    <h4>You have scheduled below meetup</h4>
+    <h4>You have successfully signed up for a Meetup</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -52,3 +52,7 @@
 
     </dl>
 </div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

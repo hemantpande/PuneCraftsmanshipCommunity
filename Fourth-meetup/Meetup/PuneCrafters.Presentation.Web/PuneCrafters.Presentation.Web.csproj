@@ -168,6 +168,7 @@
     <Content Include="Views\Organizers\Schedule.cshtml" />
     <Content Include="Views\Organizers\ScheduledSuccess.cshtml" />
     <Content Include="Views\Participants\SignupForMeetup.cshtml" />
+    <Content Include="Views\Participants\SignUpSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
