@@ -3,9 +3,10 @@
 namespace PuneCrafters.Business
 {
     public class Scheduler
-    { 
-        void ScheduleMeetup(Meetup meetup)
+    {
+        private void ScheduleMeetup(Meetup meetup)
         {
+            DataStore.CreateMeetup(meetup);
         }
     }
 }
