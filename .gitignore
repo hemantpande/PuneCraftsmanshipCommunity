@@ -19,3 +19,9 @@ Second-meetup/Code-samples/before/PeopleSoftBank/packages
 /Fourth-meetup/Meetup/.vs/PuneCrafters/v15
 /Fourth-meetup/Meetup/PuneCrafters.Business/obj
 /Fourth-meetup/Meetup/PuneCrafters.Domain/obj
+/Fourth-meetup/Meetup/.vs/config
+/Fourth-meetup/Meetup/packages
+/Fourth-meetup/Meetup/PuneCrafters.Business/bin/Debug/netstandard2.0
+/Fourth-meetup/Meetup/PuneCrafters.Domain/bin/Debug/netstandard2.0
+/Fourth-meetup/Meetup/PuneCrafters.Presentation.Web/bin
+/Fourth-meetup/Meetup/PuneCrafters.Presentation.Web/obj/
