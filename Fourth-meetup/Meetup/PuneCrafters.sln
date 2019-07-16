@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuneCrafters.Business", "PuneCrafters.Business\PuneCrafters.Business.csproj", "{1E0A3EAE-BE19-4A45-AE91-9326730DF072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PuneCrafters.Business", "PuneCrafters.Business\PuneCrafters.Business.csproj", "{1E0A3EAE-BE19-4A45-AE91-9326730DF072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuneCrafters.Domain", "PuneCrafters.Domain\PuneCrafters.Domain.csproj", "{093E3A56-2403-4600-ACD1-06A134A92BA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PuneCrafters.Domain", "PuneCrafters.Domain\PuneCrafters.Domain.csproj", "{093E3A56-2403-4600-ACD1-06A134A92BA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PuneCrafters.Presentation.Web", "PuneCrafters.Presentation.Web\PuneCrafters.Presentation.Web.csproj", "{03208C01-D0BD-4AE0-BF8C-2DA9538FB66F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{CFC5B165-811C-4C28-818B-2B9D3CC2BD33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{DCC1823A-FF92-453B-9CEA-A9216786CC1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{03208C01-D0BD-4AE0-BF8C-2DA9538FB66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03208C01-D0BD-4AE0-BF8C-2DA9538FB66F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03208C01-D0BD-4AE0-BF8C-2DA9538FB66F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFC5B165-811C-4C28-818B-2B9D3CC2BD33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC5B165-811C-4C28-818B-2B9D3CC2BD33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC5B165-811C-4C28-818B-2B9D3CC2BD33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC5B165-811C-4C28-818B-2B9D3CC2BD33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCC1823A-FF92-453B-9CEA-A9216786CC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCC1823A-FF92-453B-9CEA-A9216786CC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCC1823A-FF92-453B-9CEA-A9216786CC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCC1823A-FF92-453B-9CEA-A9216786CC1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
