@@ -53,8 +53,8 @@ namespace Services
             }
             else
             {
-                LocationData ld = new LocationData();
-                ld.SetLocation(id, locationId);
+                var loc = new LocationData();
+                loc.SetLocation(id, locationId);
             }
         }
     }

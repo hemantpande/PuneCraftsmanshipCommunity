@@ -10,7 +10,7 @@ namespace Services
 
         internal void SetLocation(uint id, int locationId)
         {
-            throw new NotImplementedException();
+            Database.LocationDatabase.SetMeetupLocation(id, locationId);
         }
     }
 }
