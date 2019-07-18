@@ -5,18 +5,19 @@ using System.Linq;
 
 namespace Database
 {
+    public class Meetup
+    {
+        public string Topic;
+        public DateTime Date;
+        public string Description;
+        public uint MaxPax;
+        public Guid User;
+    }
+
     public class MeetupDatabase
     {
         private static Dictionary<uint, Meetup> data = new Dictionary<uint, Meetup>();
-
-        private class Meetup
-        {
-            internal string Topic;
-            internal DateTime Date;
-            internal string Description;
-            internal uint MaxPax;
-            internal Guid User;
-        }
+        
 
         public static uint Add(Guid user, string topic, string description, DateTime date, uint maxParticipants)
         {

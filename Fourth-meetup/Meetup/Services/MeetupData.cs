@@ -9,5 +9,10 @@ namespace Services
         {
             return MeetupDatabase.Add(user, topic, description, date, maxParticipants);
         }
+
+        internal Meetup Get(uint meetup)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
