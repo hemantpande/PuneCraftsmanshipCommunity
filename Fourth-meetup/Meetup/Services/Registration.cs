@@ -31,21 +31,21 @@ namespace Services
                 {
                     if (user.Plan == MembershipPlan.Free)
                     {
-                        throw new Exception("You can sign up for meetups only in the last 10 days for start. Upgrade otherwise.");
+                        throw new Exception("You can sign up for meetups only in the last 10 days before start. Upgrade otherwise.");
                     }
                 }
                 else if (mUp.Date > DateTime.Today.AddDays(30))
                 {
                     if (user.Plan == MembershipPlan.Silver)
                     {
-                        throw new Exception("You can sign up for meetups only in the last 30 days for start. Upgrade otherwise.");
+                        throw new Exception("You can sign up for meetups only in the last 30 days before start. Upgrade otherwise.");
                     }
                 }
 
-                // TODO: FIND DISTANCE BASED ON USER LOCATION AND MEETUP LOCATION.
-                // USE THE DISTANCE AS A DATA WHEN WE ARE SIGNING UP THE USER.
-                // A MEETUP ADMIN CAN SEE HOW FAR PEOPLE ARE READY TO TRAVEL FOR HIS/HER MEETUP.
-                // FINISH REGISTRATION.
+                var meetupLocation = new LocationData().GetLocation(meetup);
+                int travelDistance = new LocationData().FindDistance(user.LocationId, meetupLocation);
+
+                new MeetupData().AddParticipant(meetup, user.Id, travelDistance);
             }
         }
     }

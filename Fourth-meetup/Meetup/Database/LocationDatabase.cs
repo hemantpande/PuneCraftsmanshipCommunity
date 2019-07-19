@@ -11,5 +11,10 @@ namespace Database
         {
             meetupLocations.Add(id, locationId);
         }
+
+        public static int GetMeetupLocation(uint meetup)
+        {
+            return meetupLocations[meetup];
+        }
     }
 }

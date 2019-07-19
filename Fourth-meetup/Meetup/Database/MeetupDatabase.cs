@@ -17,7 +17,11 @@ namespace Database
     public class MeetupDatabase
     {
         private static Dictionary<uint, Meetup> data = new Dictionary<uint, Meetup>();
-        
+
+        public static Meetup Get(uint id)
+        {
+            return data[id];
+        }
 
         public static uint Add(Guid user, string topic, string description, DateTime date, uint maxParticipants)
         {

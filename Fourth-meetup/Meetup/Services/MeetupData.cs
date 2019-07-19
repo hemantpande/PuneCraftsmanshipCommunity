@@ -3,16 +3,21 @@ using System;
 
 namespace Services
 {
-    internal class MeetupData
+    public class MeetupData
     {
-        internal uint Create(Guid user, string topic, string description, DateTime date, uint maxParticipants)
+        public uint Create(Guid user, string topic, string description, DateTime date, uint maxParticipants)
         {
             return MeetupDatabase.Add(user, topic, description, date, maxParticipants);
         }
 
-        internal Meetup Get(uint meetup)
+        public Meetup Get(uint meetup)
         {
-            throw new NotImplementedException();
+            return MeetupDatabase.Get(meetup);
+        }
+
+        public void AddParticipant(uint meetup, Guid id, int travelDistance)
+        {
+            MeetupParticipantDatabase.Add(meetup, id, travelDistance);
         }
     }
 }
