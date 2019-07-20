@@ -1,33 +1,23 @@
-﻿using System;
-using Database;
+﻿using Database;
+using System;
 
 namespace Services
 {
-
-    public interface IMeetupRepository
+    public class MeetupData : IMeetupData
     {
-        void AddParticipant(uint meetup, Guid id, int travelDistance);
-
-        uint Create(Meetup meetup);
-
-        Meetup Get(uint meetup);
-    }
-
-    public class MeetupData : IMeetupRepository
-    {
-        public void AddParticipant(uint meetup, Guid id, int travelDistance)
+        public uint Create(Guid user, string topic, string description, DateTime date, uint maxParticipants)
         {
-            MeetupParticipantDatabase.Add(meetup, id, travelDistance);
-        }
-
-        public uint Create(Meetup meetup)
-        {
-            return MeetupDatabase.Add(meetup);
+            return MeetupDatabase.Add(user, topic, description, date, maxParticipants);
         }
 
         public Meetup Get(uint meetup)
         {
             return MeetupDatabase.Get(meetup);
+        }
+
+        public void AddParticipant(uint meetup, Guid id, int travelDistance)
+        {
+            MeetupParticipantDatabase.Add(meetup, id, travelDistance);
         }
     }
 }

@@ -2,12 +2,8 @@
 
 namespace Services
 {
-    public class LocationData
+    public class LocationData : ILocationData
     {
-        public LocationData()
-        {
-        }
-
         public void SetLocation(uint meetup, int locationId)
         {
             Database.LocationDatabase.SetMeetupLocation(meetup, locationId);
