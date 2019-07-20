@@ -1,7 +1,7 @@
-﻿using Database;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Database;
 
 namespace Services
 {
@@ -11,43 +11,47 @@ namespace Services
 
         public void SignUp(uint meetup, User user)
         {
-            if (meetup == 0)
+            if (meetup != 0)
+            {
+                if (user != null)
+                {
+                    mUp = new MeetupData().Get(meetup);
+                    var ok = true;
+                    if (mUp.Date < DateTime.Now)
+                    {
+                        throw new Exception("Past meetup.");
+                    }
+                    else if (mUp.Date > DateTime.Today.AddDays(10))
+                    {
+                        if (user.Plan == MembershipPlan.Free)
+                        {
+                            throw new Exception("You can sign up for meetups only in the last 10 days before start. Upgrade otherwise.");
+                        }
+                    }
+                    else if (mUp.Date > DateTime.Today.AddDays(30))
+                    {
+                        if (user.Plan == MembershipPlan.Silver)
+                        {
+                            throw new Exception("You can sign up for meetups only in the last 30 days before start. Upgrade otherwise.");
+                        }
+                    }
+
+                    var meetupLocation = new LocationData().GetLocation(meetup);
+                    int travelDistance = new LocationData().FindDistance(user.LocationId, meetupLocation);
+
+                    new MeetupData().AddParticipant(meetup, user.Id, travelDistance);
+                }
+                else
+                {
+                    throw new ArgumentNullException("user");
+
+                }
+            }
+        
+            else
             {
                 throw new ArgumentException("Meetup is required.");
             }
-            else if (user == null)
-            {
-                throw new ArgumentNullException("user");
-            }
-            else
-            {
-                mUp = new MeetupData().Get(meetup);
-                var ok = true;
-                if (mUp.Date < DateTime.Now)
-                {
-                    throw new Exception("Past meetup.");
-                }
-                else if (mUp.Date > DateTime.Today.AddDays(10))
-                {
-                    if (user.Plan == MembershipPlan.Free)
-                    {
-                        throw new Exception("You can sign up for meetups only in the last 10 days before start. Upgrade otherwise.");
-                    }
-                }
-                else if (mUp.Date > DateTime.Today.AddDays(30))
-                {
-                    if (user.Plan == MembershipPlan.Silver)
-                    {
-                        throw new Exception("You can sign up for meetups only in the last 30 days before start. Upgrade otherwise.");
-                    }
-                }
-
-                var meetupLocation = new LocationData().GetLocation(meetup);
-                int travelDistance = new LocationData().FindDistance(user.LocationId, meetupLocation);
-
-                new MeetupData().AddParticipant(meetup, user.Id, travelDistance);
-            }
         }
     }
-
 }
