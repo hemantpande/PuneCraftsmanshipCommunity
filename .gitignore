@@ -31,5 +31,6 @@ Second-meetup/Code-samples/before/PeopleSoftBank/packages
 /Second-meetup/Code-samples/after/PeopleSoftBank/AccountBuddy.Domain/obj/Debug
 /Fourth-meetup/Meetup/.vs/PuneCrafters
 /Second-meetup/Code-samples/after/PeopleSoftBank/AccountBuddy.App/obj/Release
-Fourth-meetup/Meetup/Database/obj
-Fourth-meetup/Meetup/Services/obj
+/Fourth-meetup/Meetup/Database/obj
+/Fourth-meetup/Meetup/Services/obj
+/Fourth-meetup/Meetup/Database/bin/
