@@ -1,10 +1,22 @@
 ﻿using System;
+using Database;
 
 namespace Services
 {
     public class Scheduler
     {
+        private IMeetupRepository _meetupRepository;
+
         private bool valid = false;
+
+        public Scheduler() : this(new MeetupData())
+        {
+        }
+
+        public Scheduler(IMeetupRepository meetupRepository)
+        {
+            _meetupRepository = meetupRepository;
+        }
         public void ScheduleMeetup(User user, string topic, string description, DateTime date, uint maxParticipants, int locationId)
         {
             if (!string.IsNullOrWhiteSpace(topic))
@@ -51,8 +63,14 @@ namespace Services
                 throw new ArgumentException("A location is required.");
             }
 
-            var md = new MeetupData();
-            var id = md.Create(user.Id, topic, description, date, maxParticipants);
+            var id = _meetupRepository.Create(new Meetup
+            {
+                User = user.Id,
+                Topic = topic,
+                Description = description,
+                Date = date,
+                MaxPax = maxParticipants
+            });
 
             //var data = new LocationData();
             //data.SetLocation(id, locationId);

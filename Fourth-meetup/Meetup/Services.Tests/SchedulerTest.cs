@@ -1,5 +1,7 @@
 ﻿using System;
+using Database;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace Services.Tests
 {
@@ -7,12 +9,12 @@ namespace Services.Tests
     public class SchedulerTest
     {
         [TestMethod]
-        public void ShouldNotAddParticipantMoreThanTenIfPlanIsFree() 
+        public void ShouldNotAddParticipantMoreThanTenIfPlanIsFree()
         {
             // Arrange
             Scheduler scheduler = new Scheduler();
             User user = new User();
-            // Act 
+            // Act
             try
             {
                 scheduler.ScheduleMeetup(user, "ReactJS", "React JS in July", DateTime.Now.AddDays(12), 11, 1);
@@ -30,7 +32,7 @@ namespace Services.Tests
             // Arrange
             Scheduler scheduler = new Scheduler();
             User user = new User(MembershipPlan.Silver);
-            // Act 
+            // Act
             try
             {
                 scheduler.ScheduleMeetup(user, "ReactJS", "React JS in July", DateTime.Now.AddDays(12), 52, 1);
@@ -48,7 +50,7 @@ namespace Services.Tests
             // Arrange
             Scheduler scheduler = new Scheduler();
             User user = new User();
-            // Act 
+            // Act
             try
             {
                 scheduler.ScheduleMeetup(user, "ReactJS", "React JS in July", DateTime.Now.AddDays(-1), 52, 1);
@@ -66,7 +68,7 @@ namespace Services.Tests
             // Arrange
             Scheduler scheduler = new Scheduler();
             User user = new User();
-            // Act 
+            // Act
             try
             {
                 scheduler.ScheduleMeetup(user, "ReactJS", "", DateTime.Now.AddDays(-1), 52, 1);
@@ -84,7 +86,7 @@ namespace Services.Tests
             // Arrange
             Scheduler scheduler = new Scheduler();
             User user = new User();
-            // Act 
+            // Act
             try
             {
                 scheduler.ScheduleMeetup(user, "", "Some description goes here", DateTime.Now.AddDays(-1), 52, 1);
@@ -102,7 +104,7 @@ namespace Services.Tests
             // Arrange
             Scheduler scheduler = new Scheduler();
             User user = new User();
-            // Act 
+            // Act
             try
             {
                 scheduler.ScheduleMeetup(user, "React JS", "Some description goes here", DateTime.Now.AddDays(1), 05, 0);
@@ -112,6 +114,23 @@ namespace Services.Tests
                 Assert.AreEqual("A location is required.", ex.Message);
             }
             // Assert
+        }
+
+        [TestMethod]
+        public void ScheduleMeetup()
+        {
+            // Arrange
+            Mock<IMeetupRepository> mockMeetupRepository = new Mock<IMeetupRepository>();
+            mockMeetupRepository.Setup(x => x.Create(It.IsAny<Meetup>())).Returns(101);
+
+            Scheduler scheduler = new Scheduler(mockMeetupRepository.Object);
+            User user = new User();
+
+            scheduler.ScheduleMeetup(user, "React JS", "Some description goes here", DateTime.Now.AddDays(1), 05, 103476);
+
+            // Assert
+            mockMeetupRepository.Verify(x => x.Create(It.IsAny<Meetup>()));
+
         }
     }
 }

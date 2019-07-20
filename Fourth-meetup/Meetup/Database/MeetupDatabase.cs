@@ -23,15 +23,15 @@ namespace Database
             return data[id];
         }
 
-        public static uint Add(Guid user, string topic, string description, DateTime date, uint maxParticipants)
+        public static uint Add(Meetup meetup)
         {
-            if (data.Any(m => m.Value.Topic == topic && m.Value.Date == date))
+            if (data.Any(m => m.Value.Topic == meetup.Topic && m.Value.Date == meetup.Date))
             {
                 throw new Exception("Already exists.");
             }
 
             var id = (uint)data.Count;
-            data.Add(id, new Meetup { User = user, Topic = topic, Description = description, Date = date, MaxPax = maxParticipants });
+            data.Add(id, meetup);
 
             return id;
         }

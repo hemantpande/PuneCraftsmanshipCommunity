@@ -69,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{dcc1823a-ff92-453b-9cea-a9216786cc1f}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{cfc5b165-811c-4c28-818b-2b9d3cc2bd33}</Project>
       <Name>Services</Name>
