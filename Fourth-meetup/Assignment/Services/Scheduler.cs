@@ -30,25 +30,25 @@ namespace Services
                     else
                     {
                         valid = false;
-                        throw new ArgumentException("Meetup must be tomorrow or later.");
+                        throw new ArgumentException("Meetup must be today or later.", nameof(date));
                     }
                 }
                 else
                 {
                     valid = false;
-                    throw new ArgumentException("Description is required.");
+                    throw new ArgumentException("Description is required.", nameof(description));
                 }
             }
             else
             {
                 valid = false;
-                throw new ArgumentException("Topic is required.");
+                throw new ArgumentException("Topic is required.", nameof(topic));
             }
 
             if (locationId == 0)
             {
                 valid = false;
-                throw new ArgumentException("A location is required.");
+                throw new ArgumentException("A location is required.", nameof(locationId));
             }
 
             var md = new MeetupData();
