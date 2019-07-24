@@ -29,7 +29,13 @@ Second-meetup/Code-samples/before/PeopleSoftBank/packages
 /Second-meetup/Code-samples/before/PeopleSoftBank/AccountBuddy.App/obj/Release
 /Second-meetup/Code-samples/after/PeopleSoftBank/AccountBuddy.Domain/obj/Release
 /Second-meetup/Code-samples/after/PeopleSoftBank/AccountBuddy.Domain/obj/Debug
-/Fourth-meetup/Meetup/.vs/PuneCrafters
-/Second-meetup/Code-samples/after/PeopleSoftBank/AccountBuddy.App/obj/Release
+Fourth-meetup/Meetup/.vs
+Second-meetup/Code-samples/after/PeopleSoftBank/AccountBuddy.App/obj/Release
 Fourth-meetup/Meetup/Database/obj
 Fourth-meetup/Meetup/Services/obj
+Fourth-meetup/Assignment/.vs/PuneCrafters/v15/Server/sqlite3/storage.ide-shm
+Fourth-meetup/Assignment/.vs/PuneCrafters/v15/Server/sqlite3/db.lock
+Fourth-meetup/Assignment/.vs/PuneCrafters/v15/Server/sqlite3/storage.ide
+Fourth-meetup/Assignment/.vs/PuneCrafters/v15/Server/sqlite3/storage.ide-wal
+/Fourth-meetup/Assignment/.vs/PuneCrafters/v15
+Fourth-meetup/Assignment/.vs/
