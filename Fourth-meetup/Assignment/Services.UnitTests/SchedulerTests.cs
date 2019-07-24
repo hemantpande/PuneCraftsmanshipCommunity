@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Services.UnitTests
 {
     [TestClass]
-    public class SchedularTests
+    public class SchedulerTests
     {
         [TestMethod]
         public void AssertNotOk() 
