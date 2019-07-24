@@ -4,70 +4,74 @@ namespace Services
 {
     public class Scheduler
     {
-        private bool valid = false;
+        private readonly IMeetupData _meetupData;
+        private readonly ILocationData _locationData;
+
+        public Scheduler() : this(new MeetupData(), new LocationData())
+        {
+        }
+
+        public Scheduler(IMeetupData meetupData, ILocationData locationData)
+        {
+            _meetupData = meetupData;
+            _locationData = locationData;
+        }
+
         public void ScheduleMeetup(User user, string topic, string description, DateTime date, uint maxParticipants, int locationId)
         {
-            if (!string.IsNullOrWhiteSpace(topic))
-            {
-                if (!string.IsNullOrWhiteSpace(description))
-                {
-                    if (date >= DateTime.Today)
-                    {
-                        if (user.Plan != MembershipPlan.Gold && maxParticipants > 10)
-                        {
-                            if (user.Plan != MembershipPlan.Silver)
-                            {
-                                valid = false;
-                                throw new Exception("Free plan can only have up to 10 participants.");
-                            }
-                            else if (maxParticipants > 50)
-                            {
-                                valid = false;
-                                throw new Exception("Silver plan can only have up to 50 participants.");
-                            }
-                        }
-                    }
-                    else
-                    {
-                        valid = false;
-                        throw new ArgumentException("Meetup must be tomorrow or later.");
-                    }
-                }
-                else
-                {
-                    valid = false;
-                    throw new ArgumentException("Description is required.");
-                }
-            }
-            else
-            {
-                valid = false;
-                throw new ArgumentException("Topic is required.");
-            }
+            ValidateMeetup(user, topic, description, date, maxParticipants, locationId);
 
-            if (locationId == 0)
-            {
-                valid = false;
-                throw new ArgumentException("A location is required.");
-            }
-
-            var md = new MeetupData();
-            var id = md.Create(user.Id, topic, description, date, maxParticipants);
-
-            //var data = new LocationData();
-            //data.SetLocation(id, locationId);
+            var id = _meetupData.Create(user.Id, topic, description, date, maxParticipants);
 
             if (id == 0)
             {
                 throw new Exception("Failed to create meetup.");
             }
-            else
+
+            _locationData.SetLocation(id, locationId);
+        }
+
+        private static void ValidateMeetup(User user, string topic, string description, DateTime date, uint maxParticipants, int locationId)
+        {
+            ValidateInputs(topic, description, date, locationId);
+
+            ValidateMembership(user, maxParticipants);
+        }
+
+        private static void ValidateInputs(string topic, string description, DateTime date, int locationId)
+        {
+            if (string.IsNullOrWhiteSpace(topic))
             {
-                var loc = new LocationData();
-                loc.SetLocation(id, locationId);
+                throw new ArgumentException("Topic is required.", nameof(topic));
             }
 
-            valid = true;
+            if (string.IsNullOrWhiteSpace(description))
+            {
+                throw new ArgumentException("Description is required.", nameof(description));
+            }
+
+            if (date < DateTime.Today)
+            {
+                throw new ArgumentException("Meetup must be tomorrow or later.", nameof(date));
+            }
+
+            if (locationId == 0)
+            {
+                throw new ArgumentException("A location is required.", nameof(locationId));
+            }
+        }
+
+        private static void ValidateMembership(User user, uint maxParticipants)
+        {
+            if (user.Plan == MembershipPlan.Free && maxParticipants > 10)
+            {
+                throw new Exception("Free plan can only have up to 10 participants.");
+            }
+
+            if (user.Plan == MembershipPlan.Silver && maxParticipants > 50)
+            {
+                throw new Exception("Silver plan can only have up to 50 participants.");
+            }
         }
     }
 }
