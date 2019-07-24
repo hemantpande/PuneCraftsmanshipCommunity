@@ -4,11 +4,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Services.UnitTests
 {
     [TestClass]
-    public class SchedulerTests
+    public class SchedularTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void AssertNotOk() 
         {
+            Assert.Fail();
         }
     }
 }
