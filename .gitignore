@@ -43,3 +43,8 @@ Fourth-meetup/Assignment/Services.UnitTests/bin/Debug/Castle.Core.dll
 /Fourth-meetup/Assignment/Database/bin/Debug
 /Fourth-meetup/Assignment/Database/obj/Debug
 /Fourth-meetup/Meetup/Services.Tests/obj/Release
+/Fifth-Meetup/.vs/MovieRental
+/Fifth-Meetup/MovieRental.ClassLibrary/bin/Debug/netstandard2.0
+/Fifth-Meetup/MovieRental.ClassLibrary/obj
+/Fifth-Meetup/MovieRental.Tests/bin/Debug/netcoreapp2.2
+/Fifth-Meetup/MovieRental.Tests/obj
