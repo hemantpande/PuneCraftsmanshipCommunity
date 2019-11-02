@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IMeetupData.cs" />
     <Compile Include="LocationData.cs" />
     <Compile Include="MeetupData.cs" />
     <Compile Include="MembershipPlan.cs" />

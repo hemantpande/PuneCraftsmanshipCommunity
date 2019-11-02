@@ -3,7 +3,7 @@ using System;
 
 namespace Services
 {
-    public class MeetupData
+    public class MeetupData : IMeetupData
     {
         public uint Create(Guid user, string topic, string description, DateTime date, uint maxParticipants)
         {

@@ -63,12 +63,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationTest.cs" />
     <Compile Include="SchedulerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{A19A6169-4672-4541-A29D-F8B40C30F48F}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.csproj">
       <Project>{5100beb8-9d3e-4546-b3c7-ca812f918b9d}</Project>
       <Name>Services</Name>
