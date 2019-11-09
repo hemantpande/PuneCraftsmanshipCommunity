@@ -34,17 +34,17 @@
 
                 switch (rd.getMovie().getPriceCode())
                 {
-                    case 0: // Regular movie hai toh?
+                    case 0: //常規電影 Chángguī diànyǐng
                         amt += 2;
                         if (rd.getDaysRented() > 2)
                             amt += (rd.getDaysRented() - 2) * 1.5;
                         break;
 
-                    case 1: // You know it's a Newly released movie?
+                    case 1:  // Film récemment sorti
                         amt += rd.getDaysRented() * 3;
                         break;
 
-                    case 2: // O Sharmaji, childrens ke liye kuch plan nahi hai kya?
+                    case 2: //छोटे बच्चो की मूवीज 
                         amt += 1.5;
                         if (rd.getDaysRented() > 3)
                             amt += (rd.getDaysRented() - 3) * 1.5;
